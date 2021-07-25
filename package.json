@@ -1,0 +1,19 @@
+{
+  "name": "subscriber",
+  "version": "1.0.0",
+  "description": "Subscribe to all the things",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomas-sodon/subscriber.git"
+  },
+  "author": "Thomas Sodon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomas-sodon/subscriber/issues"
+  },
+  "homepage": "https://github.com/thomas-sodon/subscriber#readme"
+}
