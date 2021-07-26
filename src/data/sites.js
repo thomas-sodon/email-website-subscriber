@@ -129,17 +129,19 @@ exports.sites = {
     emailSubscribeUrl: 'https://www.jcpenney.com/',
     emailSubscribeAction: async (driver, { emailAddress }) => {
       let element = await driver.wait(
-        until.elementLocated(By.css('input[data-automation-id="marketing-input"]')),
+        until.elementLocated(
+          By.css('input[data-automation-id="marketing-input"]')
+        ),
         WAIT
       );
       await scrollIntoView(driver, element);
-      element = await driver.findElement(By.css('input[data-automation-id="marketing-input"]'));
+      element = await driver.findElement(
+        By.css('input[data-automation-id="marketing-input"]')
+      );
       await element.click();
       await element.sendKeys(emailAddress);
       element = await driver.findElement(
-        By.css(
-          'button[data-automation-id="marketing-button"]'
-        )
+        By.css('button[data-automation-id="marketing-button"]')
       );
       await element.click();
       element = await driver.wait(

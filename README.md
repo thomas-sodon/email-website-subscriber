@@ -16,3 +16,4 @@
     ```
     enabled: true
     ```
+- Concurrency is set in the index.js file. It is currently set to 6 which is the max for Chrome.
