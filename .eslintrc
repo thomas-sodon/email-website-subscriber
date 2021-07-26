@@ -1,0 +1,68 @@
+{
+  "env": {
+    "node": true,
+    "es6": true,
+    "mocha": false
+  },
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "impliedStrict": true,
+      "arrowFunctions": true,
+      "classes": true
+    }
+  },
+  "extends": ["airbnb-base", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prefer-arrow-callback": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "es5"
+      }
+    ],
+    "eqeqeq": ["error", "always"],
+    "no-console": 0,
+    "no-await-in-loop": 0,
+    "no-loop-func": 0,
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.test.js", "*.test.jsx"],
+      "env": {
+        "node": true,
+        "mocha": true
+      },
+      "rules": {
+        "id-length": 0,
+        "func-names": 0,
+        "no-unused-expressions": [0]
+      }
+    },
+    {
+      "files": ["*.js"],
+      "rules": {
+        "guard-for-in": 0,
+        "import/no-unresolved": 0,
+        "no-restricted-syntax": [
+          0,
+          {
+            "selector": "ForInStatement"
+          },
+          {
+            "selector": "ForOfStatement"
+          }
+        ]
+      }
+    }
+  ]
+}

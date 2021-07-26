@@ -4,7 +4,12 @@
   "description": "Subscribe to all the things",
   "main": "src/index.js",
   "scripts": {
-    "test": "test"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test:ci": "jest --testPathPattern=test/unit --forceExit",
+    "test": "jest --testPathPattern=test/unit --forceExit",
+    "test:watch": "jest --testPathPattern=test/unit --watch",
+    "test:update-snapshots": "jest --testPathPattern=test/unit --updateSnapshot"
   },
   "repository": {
     "type": "git",
@@ -21,5 +26,14 @@
     "chromedriver": "^92.0.0",
     "es6-promise-pool": "^2.5.0",
     "selenium-webdriver": "^4.0.0-beta.4"
+  },
+  "devDependencies": {
+    "eslint": "5.16.0",
+    "eslint-config-airbnb-base": "13.2.0",
+    "eslint-config-prettier": "3.6.0",
+    "eslint-plugin-import": "2.23.4",
+    "eslint-plugin-prettier": "3.4.0",
+    "prettier": "1.19.1",
+    "standard": "11.0.1"
   }
 }
