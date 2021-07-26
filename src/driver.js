@@ -14,24 +14,31 @@
  *     SELENIUM_BROWSER=firefox node src/index.js
  */
 
- const chrome = require('selenium-webdriver/chrome');
- const firefox = require('selenium-webdriver/firefox');
- const { Builder } = require('selenium-webdriver')
- 
- const width = 640
- const height = 480
+const chrome = require('selenium-webdriver/chrome');
+const firefox = require('selenium-webdriver/firefox');
+const { Builder } = require('selenium-webdriver');
 
- var path = require('chromedriver').path;
+const width = 640;
+const height = 480;
 
-var service = new chrome.ServiceBuilder(path).build();
+const { path } = require('chromedriver');
+
+const service = new chrome.ServiceBuilder(path).build();
 chrome.setDefaultService(service);
 
-module.exports = new Builder()
-   .forBrowser('chrome')
-//    .setChromeOptions(
-//      new chrome.Options().headless().windowSize({ width, height })
-//    )
-//    .setFirefoxOptions(
-//      new firefox.Options().headless().windowSize({ width, height })
-//    )
-   .build();
+const builder = browser => {
+  if (process.env.CI) {
+    return new Builder()
+      .forBrowser(browser)
+      .setChromeOptions(
+        new chrome.Options().headless().windowSize({ width, height })
+      )
+      .setFirefoxOptions(
+        new firefox.Options().headless().windowSize({ width, height })
+      )
+      .build();
+  }
+  return new Builder().forBrowser(browser).build();
+};
+
+module.exports = builder('chrome');
