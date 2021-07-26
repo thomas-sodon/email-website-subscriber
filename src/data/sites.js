@@ -124,24 +124,28 @@ exports.sites = {
     },
   },
   'www.jcpenney.com': {
-    enabled: false,
+    enabled: true,
     category: apparel,
     emailSubscribeUrl: 'https://www.jcpenney.com/',
     emailSubscribeAction: async (driver, { emailAddress }) => {
-      let element = await driver.findElement(
-        By.xpath(
-          '//footer[@id="footer"]/div[2]/div/div/div/ul/li/form/div/div/div/input'
-        )
+      let element = await driver.wait(
+        until.elementLocated(By.css('input[data-automation-id="marketing-input"]')),
+        WAIT
       );
+      await scrollIntoView(driver, element);
+      element = await driver.findElement(By.css('input[data-automation-id="marketing-input"]'));
       await element.click();
       await element.sendKeys(emailAddress);
       element = await driver.findElement(
-        By.xpath(
-          '//footer[@id="footer"]/div[2]/div/div/div/ul/li/form/div/div[2]/button'
+        By.css(
+          'button[data-automation-id="marketing-button"]'
         )
       );
       await element.click();
-      element = await driver.findElement(By.css('#closeModalButton'));
+      element = await driver.wait(
+        until.elementLocated(By.css('#closeModalButton')),
+        WAIT
+      );
       await element.click();
     },
   },
